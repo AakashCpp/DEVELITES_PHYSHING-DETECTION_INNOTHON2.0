@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Phishing Detector</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f4f8;
+      color: #333;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      height: 100%;
+      width: 350px;
+      min-width: 320px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #2f3e46;
+    }
+
+    .section {
+      display: none;
+    }
+
+    .active {
+      display: block;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+    }
+
+    .tab-button {
+      padding: 10px 20px;
+      background-color: #fff;
+      border: 2px solid #ddd;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+
+    .tab-button:hover {
+      background-color: #f1f1f1;
+      border-color: #333;
+    }
+
+    .scan-section {
+      display: none;
+    }
+
+    .scan-section.active {
+      display: block;
+    }
+
+    .scan-btn {
+      padding: 12px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      width: 100%;
+      margin-top: 15px;
+    }
+
+    .scan-btn:hover {
+      background-color: #45a049;
+    }
+
+    .loading {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+
+    #email-result, #url-result {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .success {
+      background-color: #d1fae5;
+      color: #065f46;
+      border: 2px solid #10b981;
+    }
+
+    .phished {
+      background-color: #fee2e2;
+      color: #b91c1c;
+      border: 2px solid #ef4444;
+    }
+
+    ul#email-reasons, ul#url-reasons {
+      list-style: none;
+      padding: 0;
+      margin-top: 15px;
+    }
+
+    ul#email-reasons li, ul#url-reasons li {
+      background-color: #fff;
+      padding: 10px;
+      margin-bottom: 8px;
+      border-left: 4px solid #4CAF50;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    footer {
+      font-size: 0.8rem;
+      color: #888;
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h3>🔍 Phishing Detection</h3>
+
+  <div class="tabs">
+    <button id="email-tab" class="tab-button">Email Scan</button>
+    <button id="url-tab" class="tab-button">URL Scan</button>
+  </div>
+
+  <!-- Email Scan Section -->
+   <!-- Email Scan Section -->
+  <div id="email-section" class="scan-section active">
+    <h4>Email Phishing Scan</h4>
+    
+    <!-- Email Input Field -->
+    <input type="text" id="email-input" placeholder="Enter Email to scan" style="padding: 12px; font-size: 1rem; width: 100%; border: 1px solid #ddd; border-radius: 5px;">
+
+    <button id="scan-email" class="scan-btn">Scan Email</button>
+    <div id="email-result">Result will be shown here.</div>
+    <ul id="email-reasons"></ul>
+  </div>
+
+
+  <!-- URL Scan Section -->
+  <div id="url-section" class="scan-section">
+    <h4>URL Phishing Scan</h4>
+    <input type="text" id="url-input" placeholder="Enter URL to scan" style="padding: 12px; font-size: 1rem; width: 100%; border: 1px solid #ddd; border-radius: 5px;">
+    <button id="scan-url" class="scan-btn">Scan URL</button>
+    <div id="url-result">Result will be shown here.</div>
+    <ul id="url-reasons"></ul>
+  </div>
+
+  <footer>
+    Powered by Your Extension • Stay Safe 💡
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>
